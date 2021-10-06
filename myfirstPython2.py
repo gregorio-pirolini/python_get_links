@@ -4,24 +4,19 @@ from bs4 import BeautifulSoup
 
 url='http://no1girl.net/js/script7.js'
 
-links= []
-
 website= requests.get(url)
 website_text=website.text
 
 
-regex=/(http)+.*(",|',)/g
+reg = "(http.*?)['|\"]"
 
+txt = website_text
 
-x = re.findall(regex, website_text)
+x = re.findall(reg, txt)
 
+# print(x)
 
-f = open("demofile4.txt", "a")
+for linx in x:
+    print(linx)
 
-for link in x:
-    # print (link)
-    
-    f.write(link)
-    f.write("\n")
-
-f.close()
+print(len(x))
